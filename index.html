@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gurubalaji M — Software Developer &amp; Data Analyst</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#12161D;
+    --paper-raised:#1A1F28;
+    --navy:#F2EDE2;
+    --navy-soft:#BFC7D6;
+    --teal:#5BBFA8;
+    --brass:#D7AD74;
+    --charcoal:#D9D6CC;
+    --muted:#938F84;
+    --hairline:#262C36;
+    --hairline-strong:#3A4150;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation:none !important; transition:none !important;}
+  }
+
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--charcoal);
+    font-family:'IBM Plex Sans', sans-serif;
+    font-size:16px;
+    line-height:1.65;
+    background-image:
+      linear-gradient(var(--hairline) 1px, transparent 1px),
+      linear-gradient(90deg, var(--hairline) 1px, transparent 1px);
+    background-size:34px 34px;
+    background-attachment:fixed;
+  }
+
+  a{color:var(--teal);}
+  a:focus-visible, button:focus-visible{
+    outline:2px solid var(--teal);
+    outline-offset:3px;
+  }
+
+  .wrap{max-width:880px; margin:0 auto; padding:0 28px;}
+
+  .mono{font-family:'IBM Plex Mono', monospace;}
+
+  /* top bar */
+  .topbar{
+    border-bottom:1px solid var(--hairline-strong);
+    background:rgba(18,22,29,0.92);
+    backdrop-filter:blur(2px);
+    position:sticky; top:0; z-index:10;
+  }
+  .topbar-inner{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:14px 0; flex-wrap:wrap; gap:10px;
+  }
+  .topbar-id{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    letter-spacing:0.08em;
+    color:var(--navy-soft);
+    text-transform:uppercase;
+  }
+  .zone-nav{display:flex; gap:4px; flex-wrap:wrap;}
+  .zone-nav a{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    text-decoration:none;
+    color:var(--navy);
+    border:1px solid var(--hairline-strong);
+    width:26px; height:26px;
+    display:flex; align-items:center; justify-content:center;
+    background:var(--paper-raised);
+  }
+  .zone-nav a:hover{border-color:var(--teal); color:var(--teal);}
+
+  /* hero */
+  .hero{padding:72px 0 56px; position:relative;}
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--teal);
+    margin:0 0 18px;
+  }
+  h1.name{
+    font-family:'IBM Plex Serif', serif;
+    font-weight:600;
+    font-size:clamp(36px, 6vw, 58px);
+    line-height:1.05;
+    color:var(--navy);
+    margin:0 0 14px;
+  }
+  .role{
+    font-size:19px;
+    color:var(--charcoal);
+    margin:0 0 22px;
+    max-width:520px;
+  }
+  .contact-row{
+    display:flex; flex-wrap:wrap; gap:6px 0;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    color:var(--muted);
+    margin:0 0 30px;
+  }
+  .contact-row a{color:var(--navy-soft); text-decoration:none; border-bottom:1px solid var(--hairline-strong);}
+  .contact-row a:hover{color:var(--teal); border-color:var(--teal);}
+  .contact-row .sep{margin:0 10px; color:var(--hairline-strong);}
+
+  .cta-row{display:flex; gap:14px; flex-wrap:wrap;}
+  .btn{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    letter-spacing:0.03em;
+    text-decoration:none;
+    padding:11px 20px;
+    border:1px solid var(--navy);
+    color:var(--navy);
+    background:transparent;
+    display:inline-block;
+  }
+  .btn:hover{background:var(--navy); color:var(--paper);}
+  .btn.primary{background:var(--navy); color:var(--paper);}
+  .btn.primary:hover{background:var(--teal); border-color:var(--teal);}
+
+  .stamp{
+    position:absolute;
+    top:64px; right:28px;
+    transform:rotate(6deg);
+    border:2px solid var(--brass);
+    color:var(--brass);
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    padding:8px 12px;
+    line-height:1.5;
+    text-align:center;
+  }
+  @media (max-width:680px){ .stamp{position:static; transform:rotate(-1deg); display:inline-block; margin-top:24px;} }
+
+  /* sections */
+  section{padding:46px 0;}
+  .zone-head{
+    display:flex; align-items:center; gap:14px;
+    margin-bottom:28px;
+  }
+  .zone-tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    width:30px; height:30px;
+    border:1px solid var(--navy);
+    color:var(--navy);
+    display:flex; align-items:center; justify-content:center;
+    flex-shrink:0;
+  }
+  .zone-head h2{
+    font-family:'IBM Plex Serif', serif;
+    font-weight:600;
+    font-size:24px;
+    color:var(--navy);
+    margin:0;
+    flex-shrink:0;
+  }
+  .zone-head .rule{flex:1; height:1px; background:var(--hairline-strong);}
+
+  .lede{max-width:640px; color:var(--charcoal); font-size:16px;}
+
+  /* project datasheet cards */
+  .project-grid{display:grid; grid-template-columns:1fr 1fr; gap:20px;}
+  @media (max-width:680px){.project-grid{grid-template-columns:1fr;}}
+  .datasheet{
+    background:var(--paper-raised);
+    border:1px solid var(--hairline-strong);
+    padding:22px 22px 18px;
+  }
+  .datasheet h3{
+    font-family:'IBM Plex Serif', serif;
+    font-size:19px;
+    font-weight:600;
+    color:var(--navy);
+    margin:0 0 14px;
+  }
+  .ds-row{
+    display:grid; grid-template-columns:84px 1fr;
+    gap:4px 14px;
+    font-size:13px;
+    padding:7px 0;
+    border-top:1px dashed var(--hairline);
+  }
+  .ds-row:first-of-type{border-top:none;}
+  .ds-label{
+    font-family:'IBM Plex Mono', monospace;
+    color:var(--muted);
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+    font-size:11px;
+    padding-top:1px;
+  }
+  .ds-value{color:var(--charcoal);}
+
+  /* experience timeline */
+  .timeline{border-left:1px solid var(--hairline-strong); margin-left:6px; padding-left:26px;}
+  .tl-item{position:relative; padding-bottom:30px;}
+  .tl-item:last-child{padding-bottom:0;}
+  .tl-item::before{
+    content:'';
+    position:absolute; left:-31px; top:5px;
+    width:9px; height:9px;
+    background:var(--teal);
+    border:2px solid var(--paper);
+    outline:1px solid var(--teal);
+  }
+  .tl-date{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px; color:var(--teal);
+    letter-spacing:0.04em;
+    margin:0 0 4px;
+  }
+  .tl-item h3{
+    font-size:16px; font-weight:600; color:var(--navy);
+    margin:0 0 4px;
+  }
+  .tl-org{font-size:13px; color:var(--muted); margin:0 0 8px;}
+  .tl-item p.desc{margin:0; font-size:14.5px; max-width:580px;}
+
+  /* skills */
+  .skill-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(190px,1fr)); gap:24px;}
+  .skill-group h3{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--brass);
+    margin:0 0 10px;
+  }
+  .skill-group ul{list-style:none; margin:0; padding:0;}
+  .skill-group li{
+    font-size:14.5px;
+    padding:6px 0;
+    border-top:1px dashed var(--hairline);
+  }
+  .skill-group li:first-child{border-top:none;}
+
+  /* education */
+  .edu-item{
+    display:grid; grid-template-columns:130px 1fr;
+    gap:6px 20px;
+    padding:18px 0;
+    border-top:1px solid var(--hairline);
+  }
+  .edu-item:first-child{border-top:none;}
+  .edu-date{font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--muted); padding-top:2px;}
+  .edu-item h3{font-size:16px; font-weight:600; color:var(--navy); margin:0 0 4px;}
+  .edu-item p{margin:0; font-size:14px; color:var(--muted);}
+
+  /* certs / activities */
+  .two-col{display:grid; grid-template-columns:1fr 1fr; gap:36px;}
+  @media (max-width:680px){.two-col{grid-template-columns:1fr;}}
+  .two-col h3{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px; letter-spacing:0.08em; text-transform:uppercase;
+    color:var(--brass); margin:0 0 14px;
+  }
+  .two-col ul{list-style:none; margin:0; padding:0;}
+  .two-col li{
+    font-size:14px; padding:9px 0;
+    border-top:1px dashed var(--hairline);
+    display:flex; justify-content:space-between; gap:10px;
+  }
+  .two-col li:first-child{border-top:none;}
+  .two-col li span.when{font-family:'IBM Plex Mono', monospace; font-size:11.5px; color:var(--muted); white-space:nowrap;}
+
+  /* title block footer */
+  footer{padding:50px 0 70px;}
+  .title-block{
+    border:1px solid var(--navy);
+  }
+  .tb-row{
+    display:grid; grid-template-columns:repeat(auto-fit, minmax(150px, 1fr));
+    border-bottom:1px solid var(--navy);
+  }
+  .tb-row:last-child{border-bottom:none;}
+  .tb-cell{
+    padding:12px 16px;
+    border-right:1px solid var(--navy);
+  }
+  .tb-cell:last-child{border-right:none;}
+
+  .tb-cell .k{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10px; letter-spacing:0.08em; text-transform:uppercase;
+    color:var(--muted); margin:0 0 4px;
+  }
+  .tb-cell .v{font-size:13.5px; color:var(--navy); margin:0; word-break:break-word;}
+  .tb-cell .v a{color:var(--navy); text-decoration:none; border-bottom:1px solid var(--hairline-strong);}
+  .tb-cell .v a:hover{color:var(--teal); border-color:var(--teal);}
+
+  .foot-note{
+    text-align:center;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px; color:var(--muted);
+    margin-top:22px; letter-spacing:0.03em;
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap topbar-inner">
+    <div class="topbar-id">Portfolio · Page · Gurubalaji M </div>
+    <nav class="zone-nav" aria-label="Section index">
+      <a href="#profile">A</a>
+      <a href="#projects">B</a>
+      <a href="#experience">C</a>
+      <a href="#skills">D</a>
+      <a href="#education">E</a>
+      <a href="#certs">F</a>
+      <a href="#contact">G</a>
+    </nav>
+  </div>
+</div>
+
+<main class="wrap">
+
+  <section class="hero" id="profile">
+    <p class="eyebrow">Entry-level · Open to opportunities</p>
+    <h1 class="name">Gurubalaji M</h1>
+    <p class="role">Aspiring software developer and data analyst, building applications and data dashboards while finishing engineering.</p>
+    <div class="contact-row">
+      <span>Salem, Tamil Nadu</span>
+      <span class="sep">·</span>
+      <a href="mailto:gurubalaji4102006@gmail.com">gurubalaji4102006@gmail.com</a>
+    </div>
+    <div class="cta-row">
+      <a class="btn primary" href="mailto:gurubalaji4102006@gmail.com">Email me</a>
+      <a class="btn" href="#projects">View projects</a>
+      <a class="btn" href="https://github.com/Gurubalaji03" target="_blank" rel="noopener">GitHub ↗</a>
+      <a class="btn" href="https://codolio.com/profile/Guru38" target="_blank" rel="noopener">Codolio ↗</a>
+    </div>
+    <div class="stamp">Status<br>Fresher —<br>ready to build</div>
+  </section>
+
+  <section id="profile-2">
+    <div class="zone-head">
+      <span class="zone-tag mono">A</span>
+      <h2>Profile</h2>
+      <span class="rule"></span>
+    </div>
+    <p class="lede">Final-year B.E. Electronics and Communication Engineering student with a growing focus on software development and data analytics. Comfortable across Python, Java, SQL, and Power BI, with project and internship experience building applications and reporting dashboards. Looking for an entry-level role to apply these skills on real problems and keep growing as a developer and analyst.</p>
+  </section>
+
+  <section id="projects">
+    <div class="zone-head">
+      <span class="zone-tag mono">B</span>
+      <h2>Projects</h2>
+      <span class="rule"></span>
+    </div>
+    <div class="project-grid">
+      <div class="datasheet">
+        <h3>Student Management System</h3>
+        <div class="ds-row"><div class="ds-label">Type</div><div class="ds-value">Desktop application</div></div>
+        <div class="ds-row"><div class="ds-label">Stack</div><div class="ds-value">Java, structured database operations</div></div>
+        <div class="ds-row"><div class="ds-label">Summary</div><div class="ds-value">Manages student records through a user-friendly interface — add, update, and delete entries, with structured data operations improving organization and retrieval.</div></div>
+      </div>
+      <div class="datasheet">
+        <h3>Sales Performance Analysis Dashboard</h3>
+        <div class="ds-row"><div class="ds-label">Type</div><div class="ds-value">Data dashboard</div></div>
+        <div class="ds-row"><div class="ds-label">Stack</div><div class="ds-value">Power BI, Microsoft Excel</div></div>
+        <div class="ds-row"><div class="ds-label">Summary</div><div class="ds-value">Interactive dashboard analyzing sales, profit, and customer trends. Cleaned and transformed data in Excel and Power BI, then built KPI cards, charts, and slicers for data-driven decisions.</div></div>
+      </div>
+      <div class="datasheet">
+        <h3>ATM Machine Management System</h3>
+        <div class="ds-row"><div class="ds-label">Type</div><div class="ds-value">Console application</div></div>
+        <div class="ds-row"><div class="ds-label">Duration</div><div class="ds-value">Mar 2026</div></div>
+        <div class="ds-row"><div class="ds-label">Stack</div><div class="ds-value">Java, OOP, ArrayList, Eclipse IDE</div></div>
+        <div class="ds-row"><div class="ds-label">Summary</div><div class="ds-value">Console-based ATM simulation built with core Java and object-oriented principles, using ArrayList to manage account and transaction data for deposits, withdrawals, and balance checks.</div></div>
+      </div>
+      <div class="datasheet">
+        <h3>ATM Banking Management System</h3>
+        <div class="ds-row"><div class="ds-label">Type</div><div class="ds-value">Database application</div></div>
+        <div class="ds-row"><div class="ds-label">Duration</div><div class="ds-value">Mar 2026 – Apr 2026</div></div>
+        <div class="ds-row"><div class="ds-label">Stack</div><div class="ds-value">Java, JDBC, MySQL, SQL, Eclipse IDE</div></div>
+        <div class="ds-row"><div class="ds-label">Summary</div><div class="ds-value">Extended the ATM concept into a database-backed system, connecting Java to MySQL via JDBC to persist account and transaction records and run SQL queries for account operations.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="zone-head">
+      <span class="zone-tag mono">C</span>
+      <h2>Experience</h2>
+      <span class="rule"></span>
+    </div>
+    <div class="timeline">
+      <div class="tl-item">
+        <p class="tl-date">Aug 2024 – Sep 2024</p>
+        <h3>Cybersecurity Internship</h3>
+        <p class="tl-org">Prompt Infotech · Remote</p>
+        <p class="desc">Gained exposure to fundamental cybersecurity concepts, threat awareness, and safe system practices.</p>
+      </div>
+      <div class="tl-item">
+        <p class="tl-date">Apr 2026 – Apr 2026</p>
+        <h3>Software Development Intern</h3>
+        <p class="tl-org">Prodigy Infotech · Mumbai (Remote)</p>
+        <p class="desc">Contributed to software development tasks as part of a remote internship, working with the development team on real project tasks.</p>
+      </div>
+      <div class="tl-item">
+        <p class="tl-date">Jun 2026 – Jul 2026</p>
+        <h3>Data Analytics Internship</h3>
+        <p class="tl-org">Thiranex Skill Development &amp; Future Tech · Remote</p>
+        <p class="desc">Worked on data analysis tasks using Excel and Power BI to extract insights from datasets.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="zone-head">
+      <span class="zone-tag mono">D</span>
+      <h2>Skills</h2>
+      <span class="rule"></span>
+    </div>
+    <div class="skill-grid">
+      <div class="skill-group">
+        <h3>Languages</h3>
+        <ul><li>Python</li><li>Java</li><li>C</li></ul>
+      </div>
+      <div class="skill-group">
+        <h3>Database</h3>
+        <ul><li>SQL (MySQL)</li></ul>
+      </div>
+      <div class="skill-group">
+        <h3>Data &amp; visualization</h3>
+        <ul><li>Power BI</li><li>Microsoft Excel</li></ul>
+      </div>
+      <div class="skill-group">
+        <h3>Tools</h3>
+        <ul><li>Eclipse IDE</li><li>Git / GitHub</li></ul>
+      </div>
+      <div class="skill-group">
+        <h3>Soft skills</h3>
+        <ul><li>Quick learner</li><li>Problem solving</li><li>Adaptability</li><li>Communication</li></ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="zone-head">
+      <span class="zone-tag mono">E</span>
+      <h2>Education</h2>
+      <span class="rule"></span>
+    </div>
+    <div class="edu-item">
+      <p class="edu-date">2023 – Present</p>
+      <div>
+        <h3>B.E. Electronics and Communication Engineering</h3>
+        <p>Muthayammal Engineering College, Rasipuram, Namakkal · CGPA 7.8</p>
+      </div>
+    </div>
+    <div class="edu-item">
+      <p class="edu-date">2021 – 2023</p>
+      <div>
+        <h3>Class XII</h3>
+        <p>Sri Ramakrishna Mission Vidyalaya Swami Shivananda Hr. Sec. School, Coimbatore · 61.16%</p>
+      </div>
+    </div>
+    <div class="edu-item">
+      <p class="edu-date">2020 – 2021</p>
+      <div>
+        <h3>Class X</h3>
+        <p>Sri Nachiyar Matriculation School, Jalakandapuram, Salem · 100%</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="certs">
+    <div class="zone-head">
+      <span class="zone-tag mono">F</span>
+      <h2>Certifications &amp; activities</h2>
+      <span class="rule"></span>
+    </div>
+    <div class="two-col">
+      <div>
+        <h3>Courses &amp; certifications</h3>
+        <ul>
+          <li><span>Python Programming — Maxpro Infotech</span><span class="when">06/23–07/23</span></li>
+          <li><span>C Programming — Maxpro Infotech</span><span class="when">05/23–06/23</span></li>
+          <li><span>Generative AI — GUVI | HCL</span><span class="when">04/25</span></li>
+          <li><span>GenAI Powered Data Analytics — Tata Forage</span><span class="when">08/25</span></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Activities &amp; hackathons</h3>
+        <ul>
+          <li><span>InnoHack — VIT, Vellore</span><span class="when">01/26</span></li>
+          <li><span>Project Expo — Dr. Ambedkar Institute of Technology, Bangalore</span><span class="when">04/25</span></li>
+          <li><span>HackIndia — Muthayammal Engineering College</span><span class="when">03/25</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="wrap" id="contact">
+  <div class="zone-head">
+    <span class="zone-tag mono">G</span>
+    <h2>Contact</h2>
+    <span class="rule"></span>
+  </div>
+  <div class="title-block">
+    <div class="tb-row">
+      <div class="tb-cell"><p class="k">Drawn by</p><p class="v">Gurubalaji M</p></div>
+      <div class="tb-cell"><p class="k">Email</p><p class="v"><a href="mailto:gurubalaji4102006@gmail.com">gurubalaji4102006@gmail.com</a></p></div>
+      <div class="tb-cell"><p class="k">Location</p><p class="v">Salem, Tamil Nadu</p></div>
+    </div>
+    <div class="tb-row">
+      <div class="tb-cell"><p class="k">LinkedIn</p><p class="v"><a href="https://linkedin.com/in/gurubalaji0315" target="_blank" rel="noopener">in/gurubalaji0315</a></p></div>
+      <div class="tb-cell"><p class="k">GitHub</p><p class="v"><a href="https://github.com/Gurubalaji03" target="_blank" rel="noopener">Gurubalaji03</a></p></div>
+      <div class="tb-cell"><p class="k">Codolio</p><p class="v"><a href="https://codolio.com/profile/Guru38" target="_blank" rel="noopener">Guru38</a></p></div>
+      <div class="tb-cell"><p class="k">Status</p><p class="v">Fresher, open to roles</p></div>
+    </div>
+  </div>
+  <p class="foot-note">Sheet 1 of 1 · Rev A · 2026 — thanks for reading</p>
+</footer>
+
+</body>
+</html>
